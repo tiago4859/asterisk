@@ -6,6 +6,7 @@ With
 - SRTP
 - Codec G729
 - Codec GSM
+- Pronpts Voice pt_BR / Brazil
 
 Futeres With 
 - Voice Conference with Dahdi 
