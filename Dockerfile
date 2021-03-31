@@ -2,14 +2,15 @@ FROM debian:jessie
 
 MAINTAINER tiago4859 <tiago4859@gmail.com>
 
-RUN apt-get update && apt-get install -y curl libedit libedit-dev vim make wget uuid-dev build-essential \
-libxml2-dev libncurses5-dev libsqlite3-dev libssl-dev libxslt-dev libjansson-dev                                                                                         libmyodbc unixodbc-bin unixODBC unixODBC-dev
+RUN apt-get update && apt-get install -y make libjansson-dev libbsd-dev libedit2 libedit-dev curl vim wget uuid-dev build-essential \
+libxml2-dev libncurses5-dev libsqlite3-dev libssl-dev libxslt-dev libjansson-dev \
+libmyodbc unixodbc-bin unixODBC unixODBC-dev libmyodbc unixodbc-bin unixODBC unixODBC-dev
 
 RUN cd /usr/src && wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz \
 && tar -xvf asterisk-18-current.tar.gz
 
 RUN cd /usr/src/asterisk-18*/ && \
-./configure && make install && make config && make samples
+./configure --with-jansson-bundled && make install && make config && make samples
 
 RUN rm -rf /usr/src/asterisk-18-current.tar.gz
 
