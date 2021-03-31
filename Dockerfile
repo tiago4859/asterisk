@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM debian:jessie
 
 MAINTAINER tiago4859 <tiago4859@gmail.com>
 
