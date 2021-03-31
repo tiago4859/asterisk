@@ -2,7 +2,7 @@ FROM debian:jessie
 
 MAINTAINER tiago4859 <tiago4859@gmail.com>
 
-RUN apt-get update && apt-get install -y curl libedit vim make wget uuid-dev build-essential \
+RUN apt-get update && apt-get install -y curl libedit libedit-dev vim make wget uuid-dev build-essential \
 libxml2-dev libncurses5-dev libsqlite3-dev libssl-dev libxslt-dev libjansson-dev                                                                                         libmyodbc unixodbc-bin unixODBC unixODBC-dev
 
 RUN cd /usr/src && wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz \
