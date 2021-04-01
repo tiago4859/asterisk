@@ -14,7 +14,7 @@ RUN cd /usr/src/ && git clone https://github.com/tiago4859/asterisk.git
 RUN cd /usr/src/asterisk-18*/ && \
 ./configure --with-jansson-bundled && make install && make config && make samples
 
-RUN cd /asterisk && mkdir tar -xzf asterisk.tar.gz -C /etc/ 
+RUN cd /usr/src/asterisk && tar -xzf asterisk.tar.gz -C /etc/ 
 
 COPY /usr/src/asterisk/pt_BR /var/lib/asterisk/sounds/
 
