@@ -4,21 +4,16 @@ MAINTAINER tiago4859 <tiago4859@gmail.com>
 
 RUN apt-get update && apt-get install -y git make libjansson-dev libbsd-dev libedit2 libedit-dev curl vim wget uuid-dev build-essential \
 libxml2-dev libncurses5-dev libsqlite3-dev libssl-dev libxslt-dev libjansson-dev \
-libmyodbc unixodbc-bin unixODBC unixODBC-dev libmyodbc unixodbc-bin unixODBC unixODBC-dev
-
-RUN cd /usr/src && wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz \
-&& tar -xvf asterisk-18-current.tar.gz
-
-RUN cd /usr/src/ && git clone https://github.com/tiago4859/asterisk.git
-
-RUN cd /usr/src/asterisk-18*/ && \
-./configure --with-jansson-bundled && make install && make config && make samples
-
-RUN cd /usr/src/asterisk && tar -xzf asterisk.tar.gz -C /etc/ 
-
-COPY /usr/src/asterisk/pt_BR /var/lib/asterisk/sounds/
-
-RUN rm -rf /usr/src/asterisk-18-current.tar.gz
+libmyodbc unixodbc-bin unixODBC unixODBC-dev libmyodbc unixodbc-bin unixODBC unixODBC-dev \
+&& cd /usr/src && wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz \
+&& tar -xvf asterisk-18-current.tar.gz \
+&& cd /usr/src/ && git clone https://github.com/tiago4859/asterisk.git \
+&& cd /usr/src/asterisk-18*/ && \
+./configure --with-jansson-bundled && make install && make config && make samples \
+&& cd /usr/src/asterisk && tar -xzf asterisk.tar.gz -C /etc/ \
+&& cp /usr/src/asterisk/pt_BR /var/lib/asterisk/sounds/ \
+&& rm -rf /usr/src/asterisk-18-current.tar.gz \
+&& rm -rf /usr/src/asterisk/
 
 EXPOSE 4569/udp
 EXPOSE 5004-5080/udp
