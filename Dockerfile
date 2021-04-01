@@ -11,10 +11,12 @@ RUN cd /usr/src && wget http://downloads.asterisk.org/pub/telephony/asterisk/ast
 
 RUN cd /usr/src/ && git clone https://github.com/tiago4859/asterisk.git
 
-RUN cd /asterisk ++++ Continuar ++++
-
 RUN cd /usr/src/asterisk-18*/ && \
 ./configure --with-jansson-bundled && make install && make config && make samples
+
+RUN cd /asterisk && mkdir tar -xzf asterisk.tar.gz -C /etc/ 
+
+COPY /usr/src/asterisk/pt_BR /var/lib/asterisk/sounds/
 
 RUN rm -rf /usr/src/asterisk-18-current.tar.gz
 
@@ -26,7 +28,5 @@ VOLUME /var/lib/asterisk
 VOLUME /var/log/asterisk
 VOLUME /var/spool/asterisk
 VOLUME /etc/asterisk
-
-COPY pt_BR /var/lib/asterisk/sounds/
 
 CMD ["/usr/sbin/asterisk","-f"]
