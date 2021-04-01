@@ -11,7 +11,7 @@ libmyodbc unixodbc-bin unixODBC unixODBC-dev libmyodbc unixodbc-bin unixODBC uni
 && cd /usr/src/asterisk-18*/ && \
 ./configure --with-jansson-bundled && make install && make config && make samples \
 && cd /usr/src/asterisk && tar -xzf asterisk.tar.gz -C /etc/ \
-&& cp /usr/src/asterisk/pt_BR /var/lib/asterisk/sounds/ \
+&& cp -a pt_BR /var/lib/asterisk/sounds/ \
 && rm -rf /usr/src/asterisk-18-current.tar.gz \
 && rm -rf /usr/src/asterisk/
 
